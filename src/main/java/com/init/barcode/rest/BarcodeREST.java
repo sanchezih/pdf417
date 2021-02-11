@@ -18,6 +18,7 @@ import com.google.zxing.Result;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
 import com.init.barcode.entity.DecodedPDF417;
+import com.init.barcode.entity.EncodedPDF417;
 
 @RestController
 @RequestMapping("barcode")
@@ -27,12 +28,12 @@ public class BarcodeREST {
 //	private BarcodeDAO BarcodeDAO;
 
 	@RequestMapping(value = "pdf417", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<DecodedPDF417> decodedBarcode(@RequestBody String encodedImage) throws Exception {
+	public ResponseEntity<DecodedPDF417> decodedBarcode(@RequestBody EncodedPDF417 foto) throws Exception {
 
 		DecodedPDF417 bc = new DecodedPDF417();
-
+		
 		try {
-			String decodedText = decodeCode(encodedImage);
+			String decodedText = decodeCode(foto.getDataBase64());
 			if (decodedText == null) {
 				System.out.println("No PDF417 Code found in the image");
 				return ResponseEntity.badRequest().build();
