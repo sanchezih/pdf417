@@ -2,7 +2,7 @@ package com.init.barcode.entity;
 
 public class Barcode {
 
-	private String data;
+	private String data = null;
 
 	public String getData() {
 		return data;

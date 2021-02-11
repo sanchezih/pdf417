@@ -30,7 +30,6 @@ public class BarcodeREST {
 	public ResponseEntity<Barcode> decodedBarcode(@RequestBody String encodedImage) throws Exception {
 
 		Barcode bc = new Barcode();
-		bc.setData(null);
 
 		try {
 			String decodedText = decodeCode(encodedImage);
@@ -45,7 +44,6 @@ public class BarcodeREST {
 			System.out.println("Could not decode PDF417 Code, IOException :: " + e.getMessage());
 		}
 		return ResponseEntity.ok(bc);
-
 	}
 
 	private static String decodeCode(String data) throws IOException {
