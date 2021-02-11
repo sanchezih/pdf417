@@ -1,7 +1,10 @@
 package com.init.barcode.entity;
 
-public class Barcode {
+import com.fasterxml.jackson.annotation.JsonProperty;
 
+public class DecodedPDF417 {
+
+	@JsonProperty("data")
 	private String data = null;
 
 	public String getData() {

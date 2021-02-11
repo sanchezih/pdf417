@@ -17,7 +17,7 @@ import com.google.zxing.NotFoundException;
 import com.google.zxing.Result;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
-import com.init.barcode.entity.Barcode;
+import com.init.barcode.entity.DecodedPDF417;
 
 @RestController
 @RequestMapping("barcode")
@@ -27,9 +27,9 @@ public class BarcodeREST {
 //	private BarcodeDAO BarcodeDAO;
 
 	@RequestMapping(value = "pdf417", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Barcode> decodedBarcode(@RequestBody String encodedImage) throws Exception {
+	public ResponseEntity<DecodedPDF417> decodedBarcode(@RequestBody String encodedImage) throws Exception {
 
-		Barcode bc = new Barcode();
+		DecodedPDF417 bc = new DecodedPDF417();
 
 		try {
 			String decodedText = decodeCode(encodedImage);
